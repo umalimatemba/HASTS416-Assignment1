@@ -1,0 +1,8 @@
+pi0 <- rep(0.2, 5)  # uniform starting distribution
+probs <- matrix(0, nrow=101, ncol=5)
+probs[1,] <- pi0
+for(n in 1:100) probs[n+1,] <- probs[n,] %*% P1
+matplot(0:100, probs, type="l", lty=1, col=1:5,
+        xlab="Step n", ylab="Probability",
+        main="Unconditional Probabilities vs Time")
+legend("right", legend=paste("State",0:4), col=1:5, lty=1)
